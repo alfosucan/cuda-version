@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
     tgt_version = "cuda-" + tgt_version;
   auto finder = CudaFinder(tgt_version);
   try {
-    finder.swapVersion();
+    finder.swapVersion(argc >= 3? atoi(argv[2]) : 60);
   } catch (const fs::filesystem_error &e) {
     std::cerr <<"\u001b[31m" <<  e.what() << '\n';
   }

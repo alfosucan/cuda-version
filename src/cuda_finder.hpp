@@ -1,7 +1,13 @@
 #pragma once
 
 #include <atomic>
+#ifdef GCC7
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#else
 #include <filesystem>
+namespace fs = std::filesystem;
+#endif
 #include <functional>
 #include <map>
 #include <mutex>
@@ -10,7 +16,7 @@
 
 #include <logger.hpp>
 
-namespace fs = std::filesystem;
+
 
 class CudaFinder {
 private:
@@ -36,7 +42,7 @@ public:
   CudaFinder(const std::string &version)
       : m_target_version(version), m_logger(Logger::getLogger()){};
   void stop();
-  bool swapVersion();
+  bool swapVersion(int time_out = 30);
   ~CudaFinder(){};
   std::map<std::string, fs::directory_entry> yield();
 };

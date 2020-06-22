@@ -5,7 +5,7 @@ Se acabo tener el \.bashrc de turno lleno de PATHS y basukito
 
 ## Set up ##
 Lo de siempre
-<pre><code>git pull git@github.com:alfosucan/cuda-version.git
+<pre><code>git clone https://github.com/alfosucan/cuda-version.git
 cd cuda-version
 cmake -S . -B build
 cd build
